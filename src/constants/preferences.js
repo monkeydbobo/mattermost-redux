@@ -53,7 +53,7 @@ export default {
             sidebarTextHoverBg: '#4578bf',
             sidebarTextActiveBorder: '#579eff',
             sidebarTextActiveColor: '#ffffff',
-            sidebarHeaderBg: '#6dc4f3',
+            sidebarHeaderBg: '#78c8fa',
             sidebarHeaderTextColor: '#ffffff',
             onlineIndicator: '#06d6a0',
             awayIndicator: '#ffbc42',
