@@ -350,7 +350,11 @@ var getProfilesWithoutTeam = (0, _reselect.createSelector)(_common.getUsers, get
 exports.getProfilesWithoutTeam = getProfilesWithoutTeam;
 
 function getStatusForUserId(state, userId) {
-  return getUserStatuses(state)[userId];
+  try {
+    return getUserStatuses(state)[userId];
+  } catch (error) {
+    return 'offline';
+  }
 }
 
 function getTotalUsersStats(state) {
