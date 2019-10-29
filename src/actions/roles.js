@@ -59,13 +59,18 @@ export function editRole(role: Role) {
         ],
     });
 }
+export function setPendingRoles(roles: Array<string>){
+    // RoleTypes.SET_PENDING_ROLES 事件重复触发
+}
 
+/*
 export function setPendingRoles(roles: Array<string>) {
     return async (dispatch: DispatchFunc, getState: GetStateFunc) => {
         dispatch({type: RoleTypes.SET_PENDING_ROLES, data: roles}, getState);
         return {data: roles};
     };
 }
+*/
 
 export function loadRolesIfNeeded(roles: Iterable<string>): ActionFunc {
     return async (dispatch: DispatchFunc, getState: GetStateFunc) => {
