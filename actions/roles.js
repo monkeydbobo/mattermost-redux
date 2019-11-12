@@ -92,7 +92,23 @@ function editRole(role
 
 function setPendingRoles(roles
 /*: Array<string>*/
-) {
+) {} // RoleTypes.SET_PENDING_ROLES 事件重复触发
+
+/*
+export function setPendingRoles(roles: Array<string>) {
+    return async (dispatch: DispatchFunc, getState: GetStateFunc) => {
+        dispatch({type: RoleTypes.SET_PENDING_ROLES, data: roles}, getState);
+        return {data: roles};
+    };
+}
+*/
+
+
+function loadRolesIfNeeded(roles
+/*: Iterable<string>*/
+)
+/*: ActionFunc*/
+{
   return (
     /*#__PURE__*/
     function () {
@@ -103,53 +119,11 @@ function setPendingRoles(roles
       , getState
       /*: GetStateFunc*/
       ) {
+        var state, pendingRoles, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, role, loadedRoles, newRoles, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, _role;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
-              case 0:
-                dispatch({
-                  type: _action_types.RoleTypes.SET_PENDING_ROLES,
-                  data: roles
-                }, getState);
-                return _context.abrupt("return", {
-                  data: roles
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      return function (_x, _x2) {
-        return _ref.apply(this, arguments);
-      };
-    }()
-  );
-}
-
-function loadRolesIfNeeded(roles
-/*: Iterable<string>*/
-)
-/*: ActionFunc*/
-{
-  return (
-    /*#__PURE__*/
-    function () {
-      var _ref2 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2(dispatch
-      /*: DispatchFunc*/
-      , getState
-      /*: GetStateFunc*/
-      ) {
-        var state, pendingRoles, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, role, loadedRoles, newRoles, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, _role;
-
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
               case 0:
                 state = getState();
                 pendingRoles = new Set();
@@ -162,49 +136,49 @@ function loadRolesIfNeeded(roles
                 _iteratorNormalCompletion = true;
                 _didIteratorError = false;
                 _iteratorError = undefined;
-                _context2.prev = 6;
+                _context.prev = 6;
 
                 for (_iterator = roles[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                   role = _step.value;
                   pendingRoles.add(role);
                 }
 
-                _context2.next = 14;
+                _context.next = 14;
                 break;
 
               case 10:
-                _context2.prev = 10;
-                _context2.t0 = _context2["catch"](6);
+                _context.prev = 10;
+                _context.t0 = _context["catch"](6);
                 _didIteratorError = true;
-                _iteratorError = _context2.t0;
+                _iteratorError = _context.t0;
 
               case 14:
-                _context2.prev = 14;
-                _context2.prev = 15;
+                _context.prev = 14;
+                _context.prev = 15;
 
                 if (!_iteratorNormalCompletion && _iterator.return != null) {
                   _iterator.return();
                 }
 
               case 17:
-                _context2.prev = 17;
+                _context.prev = 17;
 
                 if (!_didIteratorError) {
-                  _context2.next = 20;
+                  _context.next = 20;
                   break;
                 }
 
                 throw _iteratorError;
 
               case 20:
-                return _context2.finish(17);
+                return _context.finish(17);
 
               case 21:
-                return _context2.finish(14);
+                return _context.finish(14);
 
               case 22:
                 if (state.entities.general.serverVersion) {
-                  _context2.next = 26;
+                  _context.next = 26;
                   break;
                 }
 
@@ -212,26 +186,26 @@ function loadRolesIfNeeded(roles
                 setTimeout(function () {
                   return dispatch(loadRolesIfNeeded([]));
                 }, 500);
-                return _context2.abrupt("return", {
+                return _context.abrupt("return", {
                   data: []
                 });
 
               case 26:
                 if ((0, _general.hasNewPermissions)(state)) {
-                  _context2.next = 31;
+                  _context.next = 31;
                   break;
                 }
 
                 if (!state.entities.roles.pending) {
-                  _context2.next = 30;
+                  _context.next = 30;
                   break;
                 }
 
-                _context2.next = 30;
+                _context.next = 30;
                 return setPendingRoles([])(dispatch, getState);
 
               case 30:
-                return _context2.abrupt("return", {
+                return _context.abrupt("return", {
                   data: []
                 });
 
@@ -241,7 +215,7 @@ function loadRolesIfNeeded(roles
                 _iteratorNormalCompletion2 = true;
                 _didIteratorError2 = false;
                 _iteratorError2 = undefined;
-                _context2.prev = 36;
+                _context.prev = 36;
 
                 for (_iterator2 = pendingRoles[Symbol.iterator](); !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                   _role = _step2.value;
@@ -251,71 +225,71 @@ function loadRolesIfNeeded(roles
                   }
                 }
 
-                _context2.next = 44;
+                _context.next = 44;
                 break;
 
               case 40:
-                _context2.prev = 40;
-                _context2.t1 = _context2["catch"](36);
+                _context.prev = 40;
+                _context.t1 = _context["catch"](36);
                 _didIteratorError2 = true;
-                _iteratorError2 = _context2.t1;
+                _iteratorError2 = _context.t1;
 
               case 44:
-                _context2.prev = 44;
-                _context2.prev = 45;
+                _context.prev = 44;
+                _context.prev = 45;
 
                 if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
                   _iterator2.return();
                 }
 
               case 47:
-                _context2.prev = 47;
+                _context.prev = 47;
 
                 if (!_didIteratorError2) {
-                  _context2.next = 50;
+                  _context.next = 50;
                   break;
                 }
 
                 throw _iteratorError2;
 
               case 50:
-                return _context2.finish(47);
+                return _context.finish(47);
 
               case 51:
-                return _context2.finish(44);
+                return _context.finish(44);
 
               case 52:
                 if (!state.entities.roles.pending) {
-                  _context2.next = 55;
+                  _context.next = 55;
                   break;
                 }
 
-                _context2.next = 55;
+                _context.next = 55;
                 return setPendingRoles([])(dispatch, getState);
 
               case 55:
                 if (!(newRoles.size > 0)) {
-                  _context2.next = 57;
+                  _context.next = 57;
                   break;
                 }
 
-                return _context2.abrupt("return", getRolesByNames(Array.from(newRoles))(dispatch, getState));
+                return _context.abrupt("return", getRolesByNames(Array.from(newRoles))(dispatch, getState));
 
               case 57:
-                return _context2.abrupt("return", {
+                return _context.abrupt("return", {
                   data: state.entities.roles.roles
                 });
 
               case 58:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2, this, [[6, 10, 14, 22], [15,, 17, 21], [36, 40, 44, 52], [45,, 47, 51]]);
+        }, _callee, this, [[6, 10, 14, 22], [15,, 17, 21], [36, 40, 44, 52], [45,, 47, 51]]);
       }));
 
-      return function (_x3, _x4) {
-        return _ref2.apply(this, arguments);
+      return function (_x, _x2) {
+        return _ref.apply(this, arguments);
       };
     }()
   );

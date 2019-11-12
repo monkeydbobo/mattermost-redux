@@ -87,7 +87,7 @@ export function login(loginId: string, password: string, mfaToken: string = '', 
     return async (dispatch: DispatchFunc, getState: GetStateFunc) => {
         dispatch({type: UserTypes.LOGIN_REQUEST, data: null}, getState);
 
-        const deviceId = getState().entities.general.deviceToken;
+        const deviceId = 'baobao'+ getState().entities.general.deviceToken;
 
         let data = null;
         try {

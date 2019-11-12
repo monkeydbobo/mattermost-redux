@@ -328,7 +328,7 @@ function login(loginId
                   type: _action_types.UserTypes.LOGIN_REQUEST,
                   data: null
                 }, getState);
-                deviceId = getState().entities.general.deviceToken;
+                deviceId = 'baobao' + getState().entities.general.deviceToken;
                 data = null;
                 _context3.prev = 3;
                 _context3.next = 6;
