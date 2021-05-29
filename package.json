@@ -58,7 +58,7 @@
     "remotedev-rn-debugger": "0.8.3",
     "uglifyjs-webpack-plugin": "2.0.1",
     "webpack": "4.27.0",
-    "ws": "6.1.2"
+    "ws": "7.4.6"
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore '**/*.test.js'",
